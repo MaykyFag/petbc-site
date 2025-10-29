@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PETBC — Pesquisa PPL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg"></div>
+    <div class="dim"></div>
+
+    <div class="wrap">
+        <header>
+            <h1>PENITENCIÁRIA ESTADUAL THIAGO BORGES DE CARVALHO – PETBC</h1>
+        </header>
+
+        <main class="card">
+            <div class="file-input">
+                <input id="csvFile" type="file" accept=".csv">
+                <button class="btn" id="btnLoad" onclick="loadCSV()">Carregar CSV</button>
+                <div class="muted" id="status">Nenhum arquivo carregado</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <label for="searchInput" class="muted">Pesquisar por Nome completo ou Prontuário</label>
+            <div class="search">
+                <input id="searchInput" type="text" placeholder="Digite nome completo ou prontuário..." oninput="onInput()" autocomplete="off">
+                <button class="btn" onclick="doSearch()">Pesquisar</button>
+            </div>
+            <div class="hint">Sugestões aparecem enquanto digita — clique em um resultado para ver detalhes.</div>
+            <div id="suggestions" class="suggestions" style="display:none;"></div>
+        </main>
+    </div>
+
+    <div id="modalBackdrop" class="modal-backdrop">
+        <div class="modal">
+            <span class="close-x" onclick="closeModal()">✕</span>
+            <h3 id="modalName">Nome da PPL</h3>
+            <p id="modalPront"><strong>Prontuário:</strong> —</p>
+            <p id="modalCub"><strong>Cubículo:</strong> —</p>
+            <p id="modalBlock"><strong>Bloco:</strong> —</p>
+            <p id="modalDay"><strong>Dia da visita:</strong> —</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
