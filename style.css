@@ -1,0 +1,182 @@
+﻿/* Fundo com imagem apagada */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.gov-bg {
+  min-height:100vh;
+background: url('../imagens/imagemGov.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+.wrap, .main-card {
+  flex: 1 0 auto;
+}
+.footer-pr {
+  flex-shrink: 0;
+}
+
+.bg-overlay {
+  position: fixed;
+  top:0; left:0; width:100vw; height:100vh;
+  background: rgba(255,255,255,0.2);
+  z-index:0;
+  pointer-events: none;
+}
+
+/* Header estilo governo */
+.gov-header {
+  display: flex;
+  align-items: center;
+  gap:24px;
+  background: #003366;
+  color: #fff;
+  padding:16px 32px;
+  border-bottom:4px solid #00923f;
+}
+.gov-logo {
+   width: 150px;         /* ajuste o tamanho como quiser */
+  height: 150px;        /* mantenha igual à largura para ficar perfeitamente redonda */
+  object-fit: cover;    /* garante que a imagem preencha o círculo sem distorcer */
+  border-radius: 50%;   /* deixa a imagem redonda */
+  border: 2px solid #fff; /* opcional: borda branca ao redor */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* opcional: sombra para destacar */
+}
+.gov-header h1 {
+  font-size:1.4rem;
+  font-weight:bold;
+}
+
+
+.admin-btn {
+  margin-left:auto;
+  background:#00923f;
+  color:#fff;
+  border:none;
+  padding:10px 22px;
+  border-radius:4px;
+  font-size:1rem;
+  cursor:pointer;
+}
+.admin-btn:hover { background:#007a32; }
+
+.btn, .btn-outlined {
+  padding:8px 18px;
+  border-radius:4px;
+  font-size:1rem;
+}
+.btn { background:#00923f; color:#fff; border:none; cursor:pointer;}
+.btn:hover { background:#007a32;}
+.btn-outlined { background:none; color:#fff; border:2px solid #fff; cursor:pointer;}
+.btn-outlined:hover { background:#fff; color:#003366;}
+
+.main-card, .card {
+  background:#fff;
+  box-shadow:0px 2px 12px rgba(0,0,0,0.08);
+  border-radius:8px;
+  padding:32px;
+  margin:32px auto;
+}
+.main-card { max-width:480px; }
+.card { min-width:260px; }
+
+main, .main-card, .wrap {
+  flex: 1 0 auto; /* Faz o conteúdo crescer e empurra o footer para baixo */
+}
+
+.search-row {
+  display:flex; gap:8px; margin-bottom:12px;
+}
+input[type=text], input[type=password], input[type=file] {
+  padding:10px; border-radius:4px; border:1px solid #bbb; font-size:1rem; width:100%;
+}
+input[type=file] { padding:6px;}
+input[type=text]:focus, input[type=password]:focus { outline:2px solid #00923f;}
+
+/* Contraste e foco visível */
+input:focus, button:focus, .btn:focus, .admin-btn:focus, .close-btn:focus {
+  outline: 3px solid #ffb400 !important; /* Amarelo forte para foco */
+  outline-offset: 2px;
+}
+.hint { color:#666; font-size:.95rem; margin-top:.5em;}
+
+.popup {
+  display:none; position:fixed; top:0; left:0; width:100vw; height:100vh;
+  background:rgba(0,0,0,.35); z-index:1000; align-items:center; justify-content:center;
+}
+
+/* Popup acessível */
+.popup[aria-hidden=false] {
+  display: flex;
+}
+.popup[aria-hidden=true] {
+  display: none;
+}
+
+.popup-content {
+  background:#fff; padding:32px; border-radius:8px; min-width:260px; box-shadow:0px 2px 16px rgba(0,0,0,.15);
+}
+.close-btn {
+  margin-top:18px; background:#ccc; color:#222; border:none; padding:7px 18px; border-radius:4px; cursor:pointer;
+}
+.close-btn:hover { background:#bbb;}
+
+.footer-pr {
+  text-align:center; color:#fff; background:#003366; padding:18px; font-size:.95rem; margin-top:auto;
+  flex-shrink: 0;
+}
+
+.wrap.adm-flex {
+   display:flex; gap:24px; max-width:1100px; margin:auto;
+}
+@media (max-width:800px) {
+   .wrap.adm-flex { flex-direction:column;}
+   .card { margin-left:auto !important;}
+   aside.card { margin-left:auto !important;}
+   .main-card { padding:18px;}
+   .gov-header { flex-direction:column; gap:10px;}
+}
+
+.painel-cronograma {
+    background: #f5f5f5;
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin-bottom: 24px;
+    border-radius: 8px;
+    width: 300px;           /* Largura fixa menor */
+    margin: 0 auto 24px;    /* Centraliza o painel na página */
+}
+.painel-cronograma h3 {
+  margin-top: 0;
+  text-align: center;
+}
+.painel-cronograma ul {
+  padding-left: 0;
+  list-style: none;
+}
+.painel-cronograma li {
+  margin-bottom: 8px;
+}
+
+table {
+  border-collapse: collapse;
+}
+th, td {
+  border-bottom: 1px solid #ccc;
+}
+th {
+  background: #f5f5f5;
+}
+
+ul#pplList { list-style:none;padding-left:0;}
+ul#pplList li { padding:.5em .2em;border-bottom:1px solid #eee;}
+ul#pplList li:last-child{border-bottom:none;}

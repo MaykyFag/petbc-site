@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>PETBC — Painel Administrativo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSS exclusivo do ADM -->
+  <link rel="stylesheet" href="css/adm.css">
+</head>
+<body class="gov-bg">
+  <div class="bg-overlay"></div>
+  <header class="adm-header">
+    <img src="imagens/imagemGov.jpg" alt="Governo do Paraná" class="adm-logo">
+    <h1>Painel Administrativo — PETBC</h1>
+    <!-- adm.html -->
+    <button id="logoutBtn">Sair</button>
+  </header>
+
+  <div class="adm-wrap">
+    <!-- Painel de upload (menor) -->
+    <main class="adm-card adm-upload" role="region" aria-labelledby="uploadTitle">
+      <h3 id="uploadTitle">Upload do arquivo CSV</h3>
+      <form onsubmit="uploadCSV(); return false;" aria-label="Formulário de upload de CSV">
+        <label for="csvFile">Selecione o arquivo CSV:</label>
+        <div id="statusMsg" style="margin-bottom: 12px;"></div>
+        <input id="csvFile" type="file" accept=".csv" aria-required="true">
+        <button class="btn" type="submit">Carregar CSV</button>
+      </form>
+      <div id="status" class="hint" style="margin-top:10px;" aria-live="polite">Nenhum arquivo carregado.</div>
+    </main>
+
+    <!-- Painel de listagem (fixo, com scroll) -->
+    <aside class="adm-card adm-list-panel" id="pplPanel" role="region" aria-labelledby="listagemTitle">
+      <h3 id="listagemTitle">Lista de PPLs carregados</h3>
+      <div id="pplSearchArea" style="display:none;">
+        <label for="pplSearchInput">Pesquisar PPL por nome:</label>
+        <input id="pplSearchInput" type="text" placeholder="Pesquisar PPL por nome..." style="width:100%;margin-bottom:8px;" autocomplete="off">
+        <!-- Tabela acessível -->
+        <table id="pplTable" style="width:100%;" role="table" aria-label="Tabela de PPLs carregados">
+          <thead>
+            <tr>
+              <th scope="col">Prontuário</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Cubículo</th>
+              <th scope="col">Bloco</th>
+              <th scope="col">Dia da Visita</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div id="emptyListMsg" aria-live="polite">Nenhum dado carregado.</div>
+    </aside>
+  </div>
+
+  <footer class="footer-pr">
+    © Governo do Estado do Paraná — Secretaria da Segurança Pública — DEPEN/PR
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

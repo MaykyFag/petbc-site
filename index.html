@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>PETBC — Consulta de PPL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="gov-bg">
+  <div class="bg-overlay"></div>
+  <header class="gov-header">
+    <img src="imagens/imagemGov.jpg" alt="Governo do Paraná" class="gov-logo">
+    <h1>PENITENCIÁRIA ESTADUAL THIAGO BORGES DE CARVALHO – PETBC</h1>
+    <button class="admin-btn" type="button" aria-haspopup="dialog" aria-controls="admLoginPopup">Login ADM</button>
+  </header>
+  <main class="main-card" role="main">
+    <h2>Consulta de PPL</h2>
+    <form onsubmit="doSearch(); return false;" aria-label="Formulário de pesquisa de PPL">
+      <label for="searchInput">Pesquisar PPL por Nome ou Prontuário</label>
+      <div class="search-row">
+        <input id="searchInput" type="text" placeholder="Digite nome completo ou prontuário..." autocomplete="off" aria-required="true" aria-label="Campo para digitar nome ou prontuário do PPL">
+        <button class="btn" type="submit">Pesquisar</button>
+      </div>
+    </form>
+    <div class="hint">Pesquise por nome completo ou pelo prontuário (ex.: PPL001).</div>
+  </main>
+  
+  <div id="painel-cronograma" class="painel-cronograma" aria-live="polite"></div>
+
+  <!-- Popup de resultado -->
+  <div id="resultPopup" class="popup" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="pplName">
+    <div class="popup-content">
+      <h3 id="pplName">—</h3>
+      <p><strong>Prontuário:</strong> <span id="pplPront">—</span></p>
+      <p><strong>Cubículo:</strong> <span id="pplCub">—</span></p>
+      <p><strong>Bloco:</strong> <span id="pplBlock">—</span></p>
+      <p><strong>Dia da visita:</strong> <span id="pplDay">—</span></p>
+      <button class="close-btn" onclick="closePopup()" aria-label="Fechar popup de resultado">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Popup de login ADM -->
+  <div id="admLoginPopup" class="popup" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="admLoginTitle">
+    <div class="popup-content">
+      <h3 id="admLoginTitle">Login ADM</h3>
+      <form onsubmit="doAdmLogin(); return false;" aria-label="Formulário de login do administrador">
+        <label for="admPasswordInput">Senha do administrador</label>
+        <input id="admPasswordInput" type="password" placeholder="Digite a senha do administrador" autocomplete="current-password" aria-required="true">
+        <div style="display:flex; gap:8px; margin-top:12px;">
+          <button class="btn" type="submit">Entrar</button>
+          <button class="close-btn" type="button" onclick="closeAdmPopup()" aria-label="Cancelar e fechar popup de login">Cancelar</button>
+        </div>
+        <div class="hint">Senha fornecida pelo administrador do sistema.</div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer-pr">
+    © Governo do Estado do Paraná — Secretaria da Segurança Pública — DEPEN/PR
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

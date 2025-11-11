@@ -1,0 +1,152 @@
+/* Fundo com imagem apagada */
+html, body{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+    box-align: center;
+}
+
+.gov-bg {
+  min-height:100vh;
+  background: url('../imagens/imagemGov.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+.wrap, .main-card {
+  flex: 1 0 auto;
+}
+.footer-pr {
+  flex-shrink: 0;
+}
+
+.bg-overlay {
+  position: fixed;
+  top:0; left:0; width:100vw; height:100vh;
+  background: rgba(255,255,255,0.2);
+  z-index:0;
+  pointer-events: none;
+}
+
+/* Header estilo governo (ADM) */
+.adm-header {
+  display: flex;
+  align-items: center;
+  gap:24px;
+  background: #003366;
+  color: #fff;
+  padding:16px 32px;
+  border-bottom:4px solid #00923f;
+}
+.adm-logo {
+   width: 150px;
+   height: 150px;
+   object-fit: cover;
+   border-radius: 50%;
+   border: 2px solid #fff;
+   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.adm-header h1 {
+  font-size:1.4rem;
+  font-weight:bold;
+}
+.btn, .btn-outlined {
+  padding:8px 18px;
+  border-radius:4px;
+  font-size:1rem;
+}
+.btn { background:#00923f; color:#fff; border:none; cursor:pointer;}
+.btn:hover { background:#007a32;}
+.btn-outlined { background:none; color:#fff; border:2px solid #fff; cursor:pointer;}
+.btn-outlined:hover { background:#fff; color:#003366;}
+
+.adm-wrap {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  margin: 40px auto;
+  max-width: 1200px;
+}
+
+.adm-card {
+  background:#fff;
+  border-radius:8px;
+  box-shadow:0px 2px 12px rgba(0,0,0,0.08);
+  padding:32px 24px;
+}
+
+.adm-upload {
+  min-width:260px;
+  max-width:320px;
+  flex-shrink:0;
+}
+
+.adm-list-panel {
+  width:600px; /* Tamanho fixo */
+  min-height:300px;
+  max-height:300px; /* Altura máxima */
+  overflow-y:auto; /* Scroll interno */
+}
+
+#pplList {
+  list-style:none;
+  padding-left:0;
+  margin:0;
+}
+#pplList li {
+  padding:.5em .2em;
+  border-bottom:1px solid #eee;
+}
+#pplList li:last-child{border-bottom:none;}
+
+#emptyListMsg {
+  color:#888; text-align:center; margin-top:40px;
+}
+
+input[type="text"], input[type="file"] {
+  padding:10px; border-radius:4px; border:1px solid #bbb; font-size:1rem; width:100%;
+}
+input[type="file"] { padding:6px;}
+input[type="text"]:focus { outline:2px solid #00923f;}
+input:focus, button:focus, .btn:focus, .btn-outlined:focus {
+  outline: 3px solid #ffb400 !important;
+  outline-offset: 2px;
+}
+.hint { color:#666; font-size:.95rem; margin-top:.5em;}
+
+.footer-pr {
+  text-align:center; color:#fff; background:#003366; padding:18px; font-size:.95rem; margin-top:auto;
+}
+
+/* Responsividade */
+@media (max-width:900px) {
+ .adm-wrap { flex-direction:column;}
+ .adm-list-panel { width:100%; max-width:none;}
+}
+
+.adm-list-panel table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.adm-list-panel th, .adm-list-panel td {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+.adm-list-panel th {
+  background: #f5f5f5;
+}
+
+/* Se quiser garantir ainda mais isolamento, pode envolver tudo em <div class="adm-root"> e usar:
+.adm-root .btn { ... }
+.adm-root .adm-card { ... }
+etc.
+*/
